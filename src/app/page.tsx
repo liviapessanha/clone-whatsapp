@@ -1,12 +1,20 @@
+"use client"
 import { ContentArea } from "@/components/ContentArea";
 import { SideBar } from "@/components/SideBar";
+import { useEffect, useState } from "react";
 
 const Page = () => {
-  return (
-    <div className="flex w-full h-screen">
-        <SideBar />
+    const [hiddenContentArea, setHiddenContentArea] = useState(true);
 
-        <ContentArea />
+    const handleHiddenContent = () => {
+        
+        setHiddenContentArea(!hiddenContentArea);
+    }
+  return (
+    <div className="md:flex w-full h-screen">
+        <SideBar hiddenSideBar={hiddenContentArea} handleComponents={handleHiddenContent} />
+
+        <ContentArea hiddenContentArea={hiddenContentArea} />
     </div>
   );
 }
