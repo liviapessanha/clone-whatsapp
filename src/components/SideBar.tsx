@@ -10,10 +10,11 @@ import { chat } from "@/types/chat";
 type Props = {
     hiddenSideBar: boolean;
     handleComponents: () => void;
+    click: (chat: chat) => void; 
 }
-export const SideBar = ({hiddenSideBar, handleComponents}: Props) => {
+export const SideBar = ({hiddenSideBar, handleComponents, click}: Props) => {
     const [chatList, setChatList] = useState<chat[]>([
-        {name: 'Bonieky', date: '19:00', lastMessage: 'Opa, tudo bem?'}
+        {chatId: 1, name: 'Bonieky', date: '19:00', lastMessage: 'Opa, tudo bem?'}
     ]);
 
   return (
@@ -47,7 +48,7 @@ export const SideBar = ({hiddenSideBar, handleComponents}: Props) => {
         </div>
         <div className="w-full scrollbar-thin scrollbar-thumb-transparent">
             {chatList.map((item, key) => (
-                <ChatListItem handleComponents={handleComponents} key={key} item={item} />
+                <ChatListItem handleComponents={handleComponents} key={key} item={item} click={click} />
             ))}
         </div>
     </div>

@@ -3,10 +3,12 @@ import { chat } from "@/types/chat"
 type Props = {
     item: chat;
     handleComponents: () => void;
+    click: (chat:chat) => void;
 }
-export const ChatListItem = ({item, handleComponents}: Props) => {
+export const ChatListItem = ({item, handleComponents, click}: Props) => {
+    
   return (
-    <div className="flex cursor-pointer items-center gap-2 w-full border-b p-2 border-gray-300 hover:bg-teal-100">
+    <div onClick={() => click(item)} className="flex cursor-pointer items-center gap-2 w-full border-b p-2 border-gray-300 hover:bg-teal-100">
         <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="" className="w-10 h-10 rounded-full" />
         <div className="w-full flex overflow-hidden flex-col justify-center"> {/*chatListItem-lines */}
             <div onClick={handleComponents} 
