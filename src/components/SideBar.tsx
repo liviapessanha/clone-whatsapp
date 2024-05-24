@@ -11,10 +11,12 @@ type Props = {
     hiddenSideBar: boolean;
     handleComponents: () => void;
     click: (chat: chat) => void; 
+    activeChat: chat | null;
 }
-export const SideBar = ({hiddenSideBar, handleComponents, click}: Props) => {
+export const SideBar = ({hiddenSideBar, handleComponents, click, activeChat}: Props) => {
+
     const [chatList, setChatList] = useState<chat[]>([
-        {chatId: 1, name: 'Bonieky', date: '19:00', lastMessage: 'Opa, tudo bem?'}
+        {chatId: 1, name: 'Bonieky', date: '19:00', message: 'Opa, tudo bem?', avatar: 'https://www.w3schools.com/howto/img_avatar2.png'}
     ]);
 
   return (
@@ -48,7 +50,7 @@ export const SideBar = ({hiddenSideBar, handleComponents, click}: Props) => {
         </div>
         <div className="w-full scrollbar-thin scrollbar-thumb-transparent">
             {chatList.map((item, key) => (
-                <ChatListItem handleComponents={handleComponents} key={key} item={item} click={click} />
+                <ChatListItem active={activeChat?.chatId === item.chatId} handleComponents={handleComponents} key={key} item={item} click={click} />
             ))}
         </div>
     </div>

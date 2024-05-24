@@ -26,3 +26,26 @@ body {
     text-wrap: balance;
   }
 }
+
+.scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.scrollbar-track {
+  --tw-scrollbar-track: #e5e7eb;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); /* Cor da barra de rolagem */
+  border-radius: 4px; /* Arredondamento da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2); /* Cor do fundo da barra de rolagem */
+}
+
