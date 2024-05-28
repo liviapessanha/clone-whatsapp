@@ -18,7 +18,7 @@ const Page = () => {
     }
   return (
     <div className="md:flex w-full h-screen">
-        <SideBar activeChat={activeChatContentArea} hiddenSideBar={hiddenContentArea} handleComponents={handleHiddenContent} click={handleActiveChat} />
+        <SideBar activeChat={activeChatContentArea} hiddenSideBar={hiddenContentArea} handleComponents={handleHiddenContent} click={handleActiveChat} user={user} />
 
         <ContentArea user={user} onClickHiddenContent={handleHiddenContent} hiddenContentArea={hiddenContentArea} activeChat={activeChatContentArea} />
     </div>

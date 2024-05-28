@@ -6,21 +6,34 @@ import { CiSearch } from "react-icons/ci";
 import { useState } from "react";
 import { ChatListItem } from "./ChatListItem";
 import { chat } from "@/types/chat";
+import { NewChat } from "./NewChat";
 
 type Props = {
     hiddenSideBar: boolean;
     handleComponents: () => void;
     click: (chat: chat) => void; 
     activeChat: chat | null;
+    user: chat;
 }
-export const SideBar = ({hiddenSideBar, handleComponents, click, activeChat}: Props) => {
+export const SideBar = ({hiddenSideBar, handleComponents, click, activeChat, user}: Props) => {
 
     const [chatList, setChatList] = useState<chat[]>([
         {chatId: 1, name: 'Bonieky', date: '19:00', message: 'Opa, tudo bem?', avatar: 'https://www.w3schools.com/howto/img_avatar2.png'}
     ]);
 
+    const [showNewChat, setShowNewChat] = useState(false);
+    const handleOpenChatContact = () => {
+        setShowNewChat(true);
+    }
+
   return (
     <div className={`${!hiddenSideBar ? 'hidden' : 'block'}  md:w-1/3 w-full  flex flex-col md:border-r  border-gray-300`}>
+        <NewChat 
+            chatList={chatList}
+            user={user}
+            show={showNewChat} 
+            setShow={setShowNewChat}
+        />
         <header className="h-14 w-full flex justify-between items-center  md:px-4 bg-teal-500 ">
             <img 
                 src="https://www.w3schools.com/howto/img_avatar2.png" 
@@ -31,7 +44,7 @@ export const SideBar = ({hiddenSideBar, handleComponents, click, activeChat}: Pr
                 <div className="w-7 h-7 cursor-pointer flex items-center">
                     <MdDonutLarge />
                 </div>
-                <div className="w-7 h-7 cursor-pointer flex items-center">
+                <div onClick={handleOpenChatContact} className="w-7 h-7 cursor-pointer flex items-center">
                     <IoChatboxEllipsesOutline />
                 </div>
                 <div className="w-7 h-7 cursor-pointer flex items-center">
